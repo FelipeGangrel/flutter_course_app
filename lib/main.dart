@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course/product_manager.dart';
+import 'package:flutter_course_app/product_manager.dart';
 
 void main() => runApp(MyApp());
 
