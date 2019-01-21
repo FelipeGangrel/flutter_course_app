@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
 
 class Products extends StatelessWidget {
-
   final List<String> products;
 
-  Products([this.products = const []]) {
-    print('[Products widget] Constructor()');
+  Products([this.products = const []]);
+
+  Widget _buildProductItem(BuildContext context, int index) {
+    return Card(
+        child: Column(children: <Widget>[
+      Image.asset('assets/food.jpg'),
+      Text(products[index])
+    ]));
+  }
+
+  Widget _buildProductList() {
+    Widget productList = Center(
+      child: Text('Adicione itens a sua lista'),
+    );
+    
+    if (products.length > 0) {
+      productList = ListView.builder(
+        itemBuilder: _buildProductItem,
+        itemCount: products.length,
+      );
+    }
+
+    return productList;
   }
 
   @override
   Widget build(BuildContext context) {
-    print('[Products widget] Build()');
-    return Column(
-      children: products
-          .map((product) => Card(
-                  child: Column(children: <Widget>[
-                Image.asset('assets/food.jpg'),
-                Text(product)
-              ])))
-          .toList()
-    );
+    return _buildProductList();
   }
 }
