@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_course_app/product_manager.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
