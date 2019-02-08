@@ -5,7 +5,7 @@ class Products extends StatelessWidget {
   final List<Map<String, String>> products;
   final Function deleteProduct;
 
-  Products(this.products, {this.deleteProduct});
+  Products({this.products, this.deleteProduct});
 
   void _navigateToProduct(BuildContext context, int index) {
     // nosso método push retornará um Future eventualmente
@@ -19,7 +19,7 @@ class Products extends StatelessWidget {
     ).then((Map<String, bool> value) {
       // capturando o Future assim que ProductPage sofrer um pop
       // mas somente ao tocar no botão DELETE
-      if (value['delete']) {
+      if (value != null && value['delete']) {
         deleteProduct(index);
       }
     });

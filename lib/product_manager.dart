@@ -17,7 +17,6 @@ class ProductManager extends StatefulWidget {
 }
 
 class _ProductManagerState extends State<ProductManager> {
-
   List<Map<String, String>> _products = [];
 
   @override
@@ -54,7 +53,7 @@ class _ProductManagerState extends State<ProductManager> {
           child: ProductControl(_addProduct),
         ),
         Expanded(
-          child: Products(_products, deleteProduct: _deleteProduct),
+          child: Products(products: _products, deleteProduct: _deleteProduct),
         ),
       ],
     );
