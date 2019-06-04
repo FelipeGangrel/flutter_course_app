@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course_app/product_control.dart';
-import 'package:flutter_course_app/products.dart';
+
+import './products.dart';
+import './product_control.dart';
 
 class ProductManager extends StatefulWidget {
   final Map<String, String> startingProduct;
 
-  // using curly braces to turn the startinrProduct parameter
-  // an named parameter. We even assume a default value for it
-  // Unnamed parameters are called positional parameters
-  ProductManager({this.startingProduct});
+  ProductManager({this.startingProduct}) {
+    print('[ProductManager Widget] Constructor');
+  }
 
   @override
-  _ProductManagerState createState() {
+  State<StatefulWidget> createState() {
+    print('[ProductManager Widget] createState()');
     return _ProductManagerState();
   }
 }
@@ -21,14 +22,16 @@ class _ProductManagerState extends State<ProductManager> {
 
   @override
   void initState() {
-    super.initState();
+    print('[ProductManager State] initState()');
     if (widget.startingProduct != null) {
       _products.add(widget.startingProduct);
     }
+    super.initState();
   }
 
   @override
   void didUpdateWidget(ProductManager oldWidget) {
+    print('[ProductManager State] didUpdateWidget()');
     super.didUpdateWidget(oldWidget);
   }
 
@@ -36,6 +39,7 @@ class _ProductManagerState extends State<ProductManager> {
     setState(() {
       _products.add(product);
     });
+    print(_products);
   }
 
   void _deleteProduct(int index) {
@@ -46,15 +50,14 @@ class _ProductManagerState extends State<ProductManager> {
 
   @override
   Widget build(BuildContext context) {
+    print('[ProductManager State] build()');
     return Column(
-      children: <Widget>[
+      children: [
         Container(
           margin: EdgeInsets.all(10.0),
           child: ProductControl(_addProduct),
         ),
-        Expanded(
-          child: Products(products: _products, deleteProduct: _deleteProduct),
-        ),
+        Expanded(child: Products(_products, deleteProduct: _deleteProduct))
       ],
     );
   }

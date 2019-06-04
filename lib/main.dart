@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course_app/pages/auth_page.dart';
+// import 'package:flutter/rendering.dart';
 
-void main() => runApp(MyApp());
+import './pages/auth.dart';
+
+void main() {
+  // debugPaintSizeEnabled = true;
+  // debugPaintBaselinesEnabled = true;
+  // debugPaintPointersEnabled = true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EasyList',
+      // debugShowMaterialGrid: true,
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        accentColor: Colors.blue,
-      ),
+          brightness: Brightness.light,
+          primarySwatch: Colors.deepOrange,
+          accentColor: Colors.deepPurple),
       home: AuthPage(),
     );
   }

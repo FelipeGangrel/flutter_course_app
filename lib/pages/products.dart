@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course_app/pages/another_page.dart';
-import 'package:flutter_course_app/product_manager.dart';
+
+import '../product_manager.dart';
+import './products_admin.dart';
 
 class ProductsPage extends StatelessWidget {
   @override
@@ -10,20 +11,19 @@ class ProductsPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             AppBar(
-              title: Text('Choose'),
-              // impedindo que o botão humburger seja renderizado
               automaticallyImplyLeading: false,
+              title: Text('Choose'),
             ),
             ListTile(
-              title: Text('Manage products'),
+              title: Text('Manage Products'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => AnotherPage()),
-                );
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            ProductsAdminPage()));
               },
-            ),
+            )
           ],
         ),
       ),
